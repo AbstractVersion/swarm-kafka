@@ -25,7 +25,7 @@ services:
     image: private.registry.io/library-producer:latest
     ports:
       - "8080:8080"
-  producer-service:
-    image: private.registry.io/library-producer:latest
+  consumer-service:
+    image: private.registry.io/library-consumer:latest
     ports:
       - "8081:8080"
