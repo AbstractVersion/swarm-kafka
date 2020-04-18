@@ -6,6 +6,10 @@ services:
       - "2181:2181"
   kafka:
     image: wurstmeister/kafka:latest
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
     ports:
       - target: 9094
         published: 9094
