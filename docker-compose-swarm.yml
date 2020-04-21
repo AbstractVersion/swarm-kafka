@@ -4,6 +4,7 @@ services:
     image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
+ 
   kafka:
     image: wurstmeister/kafka:latest
     deploy:
@@ -32,6 +33,15 @@ services:
       interval: 30s
       timeout: 10s
       retries: 4
+      
+  # https://hub.docker.com/r/bitnami/mongodb/
+  mongo:
+    image: bitnami/mongodb:latest
+    restart: always
+    environment:
+      - MONGODB_ROOT_PASSWORD=admin
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
 
   producer-service:
     image: private.registry.io/library-producer:latest
@@ -41,3 +51,6 @@ services:
     image: private.registry.io/library-consumer:latest
     ports:
       - "8081:8080"
+volumes: 
+  mongodb_data:
+    driver: local
