@@ -13,5 +13,5 @@ COPY ${DEPENDENCY}/BOOT-INF/classes /app
 
 
 
-ENTRYPOINT ["/wait_from_cloud_config.sh","java","-cp","app:app/lib/*","-Dspring.profiles.active=docker","com.kafka.template.LibraryConsulerApplication"]
+ENTRYPOINT ["/wait_from_cloud_config.sh","java","-cp","app:app/lib/*","-Dspring.profiles.active=docker","com.kafka.template.MongoAppenderApplication"]
 
