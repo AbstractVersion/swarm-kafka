@@ -1,8 +1,8 @@
 FROM openjdk:11-jre
 MAINTAINER GEORGIOS FIOTAKIS <GEORGIOS.FIOTAKIS@AKKA.EU>
 
-COPY ./wait_from_cloud_config.sh /wait_from_cloud_config.sh
-RUN chmod +x /wait_from_cloud_config.sh
+# COPY ./wait_from_cloud_config.sh /wait_from_cloud_config.sh
+# RUN chmod +x /wait_from_cloud_config.sh
 
 VOLUME /tmp
 

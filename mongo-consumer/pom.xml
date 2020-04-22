@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kafka.template</groupId>
-    <artifactId>mongo-appender</artifactId>
+    <artifactId>mongo-comsumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mongo-appender</name>
+    <name>mongo-comsumer</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
