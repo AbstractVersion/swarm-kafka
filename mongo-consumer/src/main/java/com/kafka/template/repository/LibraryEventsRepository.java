@@ -8,11 +8,13 @@ package com.kafka.template.repository;
 import com.kafka.template.entity.Book;
 import com.kafka.template.entity.LibraryEvent;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author onelove
  */
+@Repository
 public interface LibraryEventsRepository extends MongoRepository<LibraryEvent, Integer> {
       Book findBy_id(Integer id);
 }
