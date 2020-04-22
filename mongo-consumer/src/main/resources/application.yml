@@ -19,7 +19,7 @@ spring:
     mongodb:
       host: mongo
       port: 27017
-#spring.data.mongodb.authentication-database=[authentication_database]
+      authentication-database: admin
       username: abstract
       password: admin
       database: testDB
