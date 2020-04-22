@@ -17,9 +17,9 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
   data:
     mongodb:
-      host: mongo
+      host: mongodb
       port: 27017
       authentication-database: admin
-      username: abstract
+      username: root
       password: admin
       database: testDB
