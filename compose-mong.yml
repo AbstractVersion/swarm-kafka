@@ -6,9 +6,21 @@ services:
     ports:
     - 27017:27017
     command: --smallfiles
+    environment:
+      - MONGODB_ROOT_PASSWORD=admin
+      - MONGODB_USERNAME=abstract
+      - MONGODB_PASSWORD=admin
+      - MONGODB_DATABASE=testDB
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+
   app:
-    image: private.registry.io/library-consumer:latest
+    image: private.registry.io/mongo-comsumer:latest
     ports:
     - 8080:8080
     links:
     - mongodb
+
+volumes: 
+  mongodb_data:
+    driver: local
