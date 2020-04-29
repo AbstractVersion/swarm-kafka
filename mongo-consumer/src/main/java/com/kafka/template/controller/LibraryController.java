@@ -5,7 +5,6 @@
  */
 package com.kafka.template.controller;
 
-import com.kafka.template.entity.Book;
 import com.kafka.template.entity.LibraryEvent;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +14,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.kafka.template.repository.BookRepository;
+import com.kafka.template.repository.LibraryRepostory;
 
 /**
  *
  * @author onelove
  */
 @RestController
-@RequestMapping("/books")
-public class BookController {
+@RequestMapping("/library")
+public class LibraryController {
 
     @Autowired
-    private BookRepository repository;
+    private LibraryRepostory repository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Book> getAllPets() {
+    public List<LibraryEvent> getAllPets() {
         return repository.findAll();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Book addAllPet(@RequestBody Book event) {
+    public LibraryEvent addAllPet(@RequestBody LibraryEvent event) {
         return repository.save(event);
     }
 

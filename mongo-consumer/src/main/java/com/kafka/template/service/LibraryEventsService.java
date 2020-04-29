@@ -16,6 +16,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.Optional;
 import com.kafka.template.repository.BookRepository;
+import com.kafka.template.repository.LibraryRepostory;
 
 @Service
 @Slf4j
@@ -28,7 +29,7 @@ public class LibraryEventsService {
     KafkaTemplate<Integer,String> kafkaTemplate;
 
     @Autowired
-    private BookRepository libraryEventsRepository;
+    private LibraryRepostory libraryEventsRepository;
 
     public void processLibraryEvent(ConsumerRecord<Integer,String> consumerRecord) throws JsonProcessingException {
         LibraryEvent libraryEvent = objectMapper.readValue(consumerRecord.value(), LibraryEvent.class);
@@ -66,7 +67,7 @@ public class LibraryEventsService {
     }
 
     private void save(LibraryEvent libraryEvent) {
-        libraryEvent.getBook().setLibraryEvent(libraryEvent);
+//        libraryEvent.getBook().setLibraryEvent(libraryEvent);
         libraryEventsRepository.save(libraryEvent);
         log.info("Successfully Persisted the libary Event {} ", libraryEvent);
     }

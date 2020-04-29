@@ -34,15 +34,18 @@ services:
       timeout: 10s
       retries: 4
       
-  # https://hub.docker.com/r/bitnami/mongodb/
-  mongo:
-    image: bitnami/mongodb:latest
-    restart: always
+  mongodb:
+    image: mongo:latest
+    container_name: 'mongodb'
+
+    ports:
+    - 27017-27019:27017-27019
+    # command: --smallfiles
     environment:
-      - MONGODB_ROOT_PASSWORD=admin
-      - MONGODB_USERNAME=abstract
-      - MONGODB_PASSWORD=admin
-      - MONGODB_DATABASE=testDB
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: test
+
     volumes:
       - 'mongodb_data:/bitnami/mongodb'
 
@@ -57,9 +60,10 @@ services:
       - "8081:8080"
 
   mongo-consumer-service:
-    image: private.registry.io/mongo-appender
+    image: private.registry.io/mongo-consumer
     ports:
       - "8082:8080"
 volumes: 
   mongodb_data:
     driver: local
+
