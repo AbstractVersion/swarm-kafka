@@ -28,7 +28,7 @@ public class LibraryController {
     private LibraryRepostory repository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<LibraryEvent> getAllPets() {
+    public Iterable<LibraryEvent> getAllPets() {
         return repository.findAll();
     }
 

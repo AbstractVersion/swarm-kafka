@@ -5,15 +5,14 @@
  */
 package com.kafka.template.repository;
 
-import com.kafka.template.entity.Book;
 import com.kafka.template.entity.LibraryEvent;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author onelove
  */
-public interface LibraryRepostory extends MongoRepository<LibraryEvent, Integer> {
+public interface LibraryRepostory extends PagingAndSortingRepository<LibraryEvent, Integer> {
 
-    Book findBy_id(Integer id);
+//    LibraryEvent findBy_id(Integer id);
 }
