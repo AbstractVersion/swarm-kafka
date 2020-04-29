@@ -6,7 +6,6 @@
 package com.kafka.template.repository;
 
 import com.kafka.template.entity.Book;
-import com.kafka.template.entity.LibraryEvent;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Repository;
  *
  * @author onelove
  */
-@Repository
-public interface LibraryEventsRepository extends MongoRepository<LibraryEvent, Integer> {
+public interface BookRepository extends MongoRepository<Book, Integer> {
       Book findBy_id(Integer id);
 }

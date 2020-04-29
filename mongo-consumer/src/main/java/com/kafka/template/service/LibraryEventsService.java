@@ -4,7 +4,6 @@ package com.kafka.template.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kafka.template.entity.LibraryEvent;
-import com.kafka.template.repository.LibraryEventsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.Optional;
+import com.kafka.template.repository.BookRepository;
 
 @Service
 @Slf4j
@@ -28,7 +28,7 @@ public class LibraryEventsService {
     KafkaTemplate<Integer,String> kafkaTemplate;
 
     @Autowired
-    private LibraryEventsRepository libraryEventsRepository;
+    private BookRepository libraryEventsRepository;
 
     public void processLibraryEvent(ConsumerRecord<Integer,String> consumerRecord) throws JsonProcessingException {
         LibraryEvent libraryEvent = objectMapper.readValue(consumerRecord.value(), LibraryEvent.class);

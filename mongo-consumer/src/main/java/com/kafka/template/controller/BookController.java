@@ -6,7 +6,6 @@
 package com.kafka.template.controller;
 
 import com.kafka.template.entity.LibraryEvent;
-import com.kafka.template.repository.LibraryEventsRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import com.kafka.template.repository.BookRepository;
 
 /**
  *
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookController {
 
     @Autowired
-    private LibraryEventsRepository repository;
+    private BookRepository repository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<LibraryEvent> getAllPets() {

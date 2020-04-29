@@ -17,7 +17,7 @@ services:
       - 'mongodb_data:/bitnami/mongodb'
 
   app:
-    image: private.registry.io/mongo-comsumer:latest
+    image: private.registry.io/demo:latest
     ports:
     - 8080:8080
     links:
