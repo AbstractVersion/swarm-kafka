@@ -30,6 +30,8 @@ public class LibraryEventsService {
 
     @Autowired
     private LibraryRepostory libraryEventsRepository;
+    @Autowired
+    private BookRepository bookRepository;
 
     public void processLibraryEvent(ConsumerRecord<Integer,String> consumerRecord) throws JsonProcessingException {
         LibraryEvent libraryEvent = objectMapper.readValue(consumerRecord.value(), LibraryEvent.class);
@@ -67,7 +69,8 @@ public class LibraryEventsService {
     }
 
     private void save(LibraryEvent libraryEvent) {
-//        libraryEvent.getBook().setLibraryEvent(libraryEvent);
+        log.info("****************** "+ libraryEvent.getBook().getBookName());
+        bookRepository.save(libraryEvent.getBook());
         libraryEventsRepository.save(libraryEvent);
         log.info("Successfully Persisted the libary Event {} ", libraryEvent);
     }
